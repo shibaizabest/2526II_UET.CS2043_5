@@ -5,6 +5,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         String roomType = sc.next();
         int night = sc.nextInt();
+
         if (roomType.equals("S")){
             StandardRoom stdRoom = new StandardRoom(night);
             System.out.println(stdRoom.getFinalPrice());
