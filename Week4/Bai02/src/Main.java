@@ -6,4 +6,5 @@ public class Main {
         CanFight cf = (CanFight) h;
         h.fight();
     }
+    //Khong can ep lai ve Hero, vi no da so huu 1 ham Fight tu ActionChar, thoa man cho cai Interface CanFight
 }

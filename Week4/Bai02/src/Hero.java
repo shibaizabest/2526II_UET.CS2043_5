@@ -9,8 +9,8 @@ public class Hero extends ActionCharacter implements CanFight, CanSwim, CanFly{
         System.out.println("Fly");
     }
 
-    @Override
-    public void fight() {
-        super.fight();
-    }
+//    @Override
+//    public void fight() {
+//        super.fight();
+//    }
 }

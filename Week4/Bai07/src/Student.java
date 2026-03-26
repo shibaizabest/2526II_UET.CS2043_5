@@ -27,11 +27,6 @@ public class Student{
     public double getGpa(){ return gpa; }
     @Override
     public String toString(){
-        return
-                "-----Thong tin sinh vien-----\n" +
-                        "ID: " + this.id + '\n' +
-                        "NAME: " + this.name + '\n' +
-                        "EMAIL: " + this.email + '\n' +
-                        "GPA: " + this.gpa + '\n';
+        return id + " " + name + " " + gpa + "\n";
     }
 }

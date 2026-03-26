@@ -1,5 +1,5 @@
 public class ActionCharacter {
-    void fight(){
+    public void fight(){
         System.out.println("Dam boc.");
     }
 }
