@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
 
         String inputFile = sc.nextLine();
@@ -32,13 +32,18 @@ public class Main {
             System.err.println("Source file not found.");
         } catch (IOException e) {
             System.err.println("I/O error.");
-            System.out.println(e);
+            System.err.println(e.getMessage());
         } finally {
             if (printWriter!= null){
                 printWriter.close();
             }
-            if (bufferedReader != null){
-                bufferedReader.close();
+            try{
+                if (bufferedReader != null){
+                    bufferedReader.close();
+                }
+            } catch (IOException e) {
+                System.err.println("I/O error.");
+                System.err.println(e.getMessage());
             }
         }
     }
