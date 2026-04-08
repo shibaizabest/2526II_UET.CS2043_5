@@ -7,16 +7,16 @@ public class Main {
         double tempGpa;
         Scanner sc = new Scanner(System.in);
 
-        String destinationFile = "Bai09/src/StudentsList.dat";
+        String destinationFile = "src/StudentsList.dat";
         try{
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(destinationFile));
-            tempId = sc.next();
+            tempId = sc.nextLine();
             while(!tempId.equals("END")){
                 tempName = sc.nextLine();
-                tempGpa = sc.nextDouble();
+                tempGpa = sc.nextDouble();sc.nextLine();
 
                 objectOutputStream.writeObject(new Student(tempId, tempName, tempGpa));
-                tempId = sc.next();
+                tempId = sc.nextLine();
             }
             objectOutputStream.close();
 

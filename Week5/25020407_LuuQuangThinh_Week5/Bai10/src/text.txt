@@ -1,3 +1,1 @@
 username=Luu Thinh
-timeout=10
-maxConnections=1

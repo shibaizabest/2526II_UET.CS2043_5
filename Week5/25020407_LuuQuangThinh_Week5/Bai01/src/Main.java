@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args){
-//        useString();
-//        useStringBuffer();
+       useString();
+        useStringBuffer();
         contentAnalysis();
     }
     public static void useString(){
