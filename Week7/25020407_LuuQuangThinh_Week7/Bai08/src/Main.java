@@ -13,8 +13,8 @@ public class Main {
         ArrayList<Future<ArrayList<Integer>>> threadPool1 = new ArrayList<>();
         ArrayList<Future<Integer>> threadPool2 = new ArrayList<>();
 
-        ExecutorService executor1 = Executors.newFixedThreadPool(1);
-        ExecutorService executor2 = Executors.newFixedThreadPool(1);
+        ExecutorService executor1 = Executors.newFixedThreadPool(2);
+        ExecutorService executor2 = Executors.newFixedThreadPool(2);
 
         try{
             for (int i = 0; i < n ; i++) {
@@ -42,11 +42,3 @@ public class Main {
         }
     }
 }
-/*
-4
-5  2 3 4 5 6
-4  7 8 9 10
-3  11 12 13
-4  2 4 6 8
-
- */

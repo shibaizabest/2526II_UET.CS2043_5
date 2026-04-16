@@ -8,12 +8,11 @@ public class Prime implements Callable<ArrayList<Integer>> {
     private int index;
     private ExecutorService executor2;
 
-    public boolean isPrime(int n) throws InterruptedException {
+    public boolean isPrime(int n){
         if (n < 2) return false;
         for (int i = 2; i*i <= n; i++){
             if (n % i == 0) return false;
         }
-//        Thread.sleep(400);
         return true;
     }
 
