@@ -24,7 +24,6 @@ public class Sum implements Callable<Integer> {
             }
             System.out.println("Stage 2 - Array " + index + ": sum of cubes = " + sum);
         }
-        Main.result.addAndGet(sum);
         return sum;
     }
 }

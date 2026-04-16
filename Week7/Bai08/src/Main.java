@@ -4,41 +4,46 @@ import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Main {
-    public static AtomicInteger result = new AtomicInteger(0);
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        int finalResult = 0;
 
         int n = sc.nextInt();
-        ArrayList<Future<ArrayList<Integer>>> threadPool1 = new ArrayList<>();
-        ArrayList<Future<Integer>> threadPool2 = new ArrayList<>();
 
-        ExecutorService executor1 = Executors.newFixedThreadPool(1);
-        ExecutorService executor2 = Executors.newFixedThreadPool(1);
+        ExecutorService executor1 = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+        ExecutorService executor2 = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+
+        ExecutorCompletionService<ResultWrapper> service1 = new ExecutorCompletionService<>(executor1);
 
         try{
-            for (int i = 0; i < n ; i++) {
+            for (int i = 0; i < n; i++){
                 int m = sc.nextInt();
                 ArrayList<Integer> temp = new ArrayList<>();
 
-                while (m-- > 0) {
+                while (m-- > 0){
                     temp.add(sc.nextInt());
                 }
-                threadPool1.add(executor1.submit(new Prime(i, new ArrayList<>(temp), executor2)));
-            }
-        } finally {
-            try{
-                executor1.shutdown(); // Dung nhan them task
-                if (executor1.awaitTermination(10, TimeUnit.SECONDS)) {
-                    executor2.shutdown();
-                    if (executor2.awaitTermination(10, TimeUnit.SECONDS)) {
-                        System.out.println("Total = " + result.get());
-                    }
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
 
+                service1.submit(new Prime(i, temp));
+            }
+            ArrayList<Future<Integer>> future2 = new ArrayList<>();
+            for (int i = 0; i < n; i ++){
+                Future<ResultWrapper> future = service1.take();
+                ResultWrapper result1 = future.get();
+
+                future2.add(executor2.submit(new Sum(result1.index, new ArrayList<>(result1.data))));
+            }
+            for (Future<Integer> f : future2){
+                finalResult += f.get();
+            }
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+        finally {
+            executor1.close();
+            executor2.close();
+            System.out.println("Total = " + finalResult);
         }
     }
 }
