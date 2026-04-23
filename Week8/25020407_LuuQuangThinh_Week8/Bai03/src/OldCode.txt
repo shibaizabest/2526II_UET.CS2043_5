@@ -1,0 +1,29 @@
+class Vehicle {
+    protected String plate;
+    protected String brand;
+    protected double fuelLevel;    // Chỉ xe chạy xăng mới dùng
+    protected int batteryPercent;  // Chỉ xe điện mới dùng
+}
+
+class MotorBike extends Vehicle {
+    public String getInfo() {
+        return "Xe máy [" + plate + "] - " + brand;
+    }
+    public void refuel(double liters) { fuelLevel += liters; }
+}
+
+class Car extends Vehicle {
+    public String getInfo() {
+        return "Ô tô [" + plate + "] - " + brand;
+    }
+    public void refuel(double liters) { fuelLevel += liters; }
+}
+
+class ElectricCar extends Vehicle {
+    public String getInfo() {
+        return "Xe điện [" + plate + "] - " + brand;
+    }
+    public void charge(int percent) { batteryPercent += percent; }
+}
+// Code khong thoa man nguyen tac Liskov Substitution Principle (Lop con khong thoa man  quan he is-a voi lop cha) va thuoc tinh dang de la protected, khong thoa man Open/Closed
+// Giai phap: Tai cau truc ma nguon, loai bo fuelLevel va batteryPercent, gan thuoc tinh xang, dien va kha nang sac / bom xang rieng cho 2 lop con rieng, tao getter/setter rieng

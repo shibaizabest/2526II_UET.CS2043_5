@@ -1,0 +1,2 @@
+1. Khi cần thêm mặt hàng mới, cần phải sửa code ở cả getDeliveryFee và getLabel, thêm nhiều if else
+4. Khi cần thêm mặt hàng mới, chỉ cần thêm một class Bulky kế thừa Order, rất tiện và không phải sửa code cũ

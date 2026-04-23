@@ -12,11 +12,7 @@ public class Main {
         Thread t2 = new Thread(() -> {
             int times = 1000;
             while(times-- > 0){
-                try {
-                    myAccount.withdraw(100);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+                myAccount.withdraw(100);
             }
         });
 

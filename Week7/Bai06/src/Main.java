@@ -7,7 +7,7 @@ import java.util.concurrent.Future;
 
 public class Main {
     public static void main(String[] args) {
-        ExecutorService executor = Executors.newFixedThreadPool(2);
+        ExecutorService executor = Executors.newCachedThreadPool();
         try{
             Scanner sc = new Scanner(System.in);
 

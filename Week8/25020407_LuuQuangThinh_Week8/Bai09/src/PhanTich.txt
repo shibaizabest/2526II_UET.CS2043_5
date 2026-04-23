@@ -1,0 +1,12 @@
+1.
+Lớp 1 (Lỗi): gpa < 0 hoặc gpa > 10.
+Lớp 2 (Yếu): 0 <= gpa < 5.
+Lớp 3 (Trung bình): 5 <= gpa < 6.5.
+Lớp 4 (Khá): 6.5 <= gpa < 8.
+Lớp 5 (Giỏi): 8 < gpa <= 10.
+
+2.
+Đầu vào 5.0 (Trung Bình) nhưng ra Yếu
+Đầu vo 6.5 (Khá) nhưng ra Trung bình
+
+Code lỗi ở <= tại 5.0 và 6.5
