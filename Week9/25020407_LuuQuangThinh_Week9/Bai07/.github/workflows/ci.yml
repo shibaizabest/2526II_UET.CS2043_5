@@ -1,0 +1,35 @@
+name: Pull Request Review
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      checks: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: Run tests and Checkstyle
+        run: mvn clean verify
+
+      - name: Publish Checkstyle comments
+        if: always()
+        uses: dbelyaev/action-checkstyle@v1.7.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          level: warning
+          checkstyle_config: google_checks.xml
+          workdir: .

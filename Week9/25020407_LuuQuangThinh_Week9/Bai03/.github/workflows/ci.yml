@@ -1,0 +1,28 @@
+name: Java CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Build with Maven
+        run: mvn clean package
+
+      - name: Upload jar artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: math-ci-app
+          path: target/*.jar
